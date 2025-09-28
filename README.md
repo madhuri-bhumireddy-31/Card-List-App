@@ -1,16 +1,57 @@
-# React + Vite
+# Card List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that demonstrates:
+- Virtualized list rendering using **react-window**  
+- A **Scroll to Top** button with smooth scrolling  
+- Component-level testing using **Jest** and **React Testing Library**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup Instructions
 
-## React Compiler
+1. Clone the repository:
+   ```bash
+   git clone MY-APP
+   cd my-app
+2. Install dependencies:
+   ```bash
+   npm install
+3. Start the development server:
+   ```bash
+   npm start
+4. Run the test suite:
+   ```bash
+   npm test
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Summary of Approach
+The application is split into three main components:
 
-## Expanding the ESLint configuration
+-	Built reusable components: Card, CardList, and ScrollToTopButton.
+-	Used react-window to optimize performance when rendering 1000+ cards.
+-	Added a scroll-to-top button with custom visibility logic.
+-	Centralized styles in style.css.
+-	Configured Babel + Jest for React testing environment.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Virtual Scrolling Implementation
+- Implemented using react-window’s FixedSizeList.
+- Instead of rendering all 1000+ cards in the DOM, only the visible items + a -    small buffer are rendered at a time.
+- This ensures smooth performance and avoids unnecessary re-rendering.
+
+# Testing
+- Testing is done using Jest + React Testing Library.
+- CSS imports are mocked using identity-obj-proxy in jest.config.js.
+
+## Tests included:
+**Card Rendering**
+Ensures title & description are displayed correctly.
+
+**ScrollToTop Buttn**
+Ensures button only appears after 300px scroll.
+Ensures click scrolls list back to top.
+
+**Virtualized List Rendering**
+Ensures that the first few visible cards (e.g., Card 1, Card 5) are rendered into the DOM.
+
+Run tests:
+```bush
+npm test
