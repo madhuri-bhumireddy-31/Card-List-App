@@ -23,7 +23,7 @@ export default function ScrollToTopButton({ listRef }) {
 
   return (
     <button onClick={() => listRef.current.scrollTo(0)} aria-label="scroll-to-top">
-      ⬆️ Scroll to Top
+     ⬆ Scroll to Top
     </button>
   );
 }
