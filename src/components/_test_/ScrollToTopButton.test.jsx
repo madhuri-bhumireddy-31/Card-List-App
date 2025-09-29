@@ -19,7 +19,7 @@ test("button appears on scroll and scrolls to top", () => {
   expect(screen.queryByRole("button")).toBeNull(); // hidden first
 
   fireEvent.scroll(listRef.current._outerRef, { target: { scrollTop: 400 } });
-  fireEvent.click(screen.getByRole("button")); // now visible & clickable
+  fireEvent.click(screen.getByRole("button"));
 
   expect(listRef.current.scrollTo).toHaveBeenCalledWith(0);
 });
